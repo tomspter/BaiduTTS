@@ -11,9 +11,9 @@ public class DBUtil {
          */
         public static Connection getConnection() {
             //TODO
-            String url = "jdbc:mysql://localhost:3306/art_bf?characterEncoding=UTF-8";
+            String url = "jdbc:mysql://localhost:3306/baidu_translation?characterEncoding=UTF-8";
             String username = "root";
-            String password = "vertrigo";
+            String password = "123admin";
             String driver = "com.mysql.jdbc.Driver" ;
             Connection conn = null;
             try {

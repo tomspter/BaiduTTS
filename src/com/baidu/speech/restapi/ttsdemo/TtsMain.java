@@ -1,6 +1,7 @@
 package com.baidu.speech.restapi.ttsdemo;
 
 import com.baidu.speech.restapi.common.*;
+import com.iflytek.cloud.speech.SpeechUtility;
 
 import java.io.IOException;
 import java.sql.*;
@@ -13,7 +14,7 @@ public class TtsMain {
     public static void main(String[] args) throws SQLException, IOException, DemoException {
 
         //TODO
-        String selectSQL = "SELECT * FROM user_sound";
+        String selectSQL = "SELECT * FROM translation";
         List<String> name = new ArrayList<>();
         List<Integer>id=new ArrayList<>();
 
@@ -29,10 +30,12 @@ public class TtsMain {
 
             String text = name.get(i);
 
-            TTSUtil.download(text);
+//            TTSUtil.download(text);
+            WebTTs.kedaTTS(text);
+            System.out.println("******完成第"+i+"个******");
 
             //TODO
-            String updateSQL = "update user_sound set sound_name=? where id=?";
+            String updateSQL = "update translation set name_mp3=? where id=?";
             String update[] = {MD5Util.MD5Encode(name.get(i),"utf8"), String.valueOf(id.get(i))};
             DBUtil.executUpdate(updateSQL, update);
         }
